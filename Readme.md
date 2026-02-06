@@ -3,7 +3,7 @@
 ## Descripción general
 Este proyecto implementa un **sumador–restador de 4 bits** utilizando únicamente **puertas lógicas básicas** (AND, OR y NOT). A partir de estas puertas se construye la operación XOR, un **sumador completo de 1 bit**, y finalmente un sistema de **4 bits conectado en cascada**.
 
-La implementación se realiza en **Python**, simulando el comportamiento interno de un circuito digital a nivel de hardware, similar al de una **Unidad Aritmético-Lógica (ALU)**.
+La implementación se realiza en **Python**.
 
 ---
 
@@ -19,7 +19,7 @@ La implementación se realiza en **Python**, simulando el comportamiento interno
 
 ### Arquitectura general
 
-![Diagrama lógico del sumador-restador de 4 bits](./DiagramaLogico.png)
+
 El sistema está compuesto por **cuatro sumadores completos de 1 bit (SC)** conectados en cascada, formando un **ripple-carry adder**.
 
 Cada sumador completo recibe:
