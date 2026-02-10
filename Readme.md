@@ -1,16 +1,20 @@
 # Sumador / Restador de 4 Bits usando Puertas Lógicas
 
 ## Descripción general
-Este proyecto implementa un **sumador–restador de 4 bits** utilizando únicamente **puertas lógicas básicas** (AND, OR y NOT). A partir de estas puertas se construye la operación XOR, un **sumador completo de 1 bit**, y finalmente un sistema de **4 bits conectado en cascada**.
 
-La implementación se realiza en **Python**.
+Este proyecto implementa un **sumador–restador de 4 bits** utilizando únicamente **puertas lógicas básicas** (AND, OR y NOT).  
+A partir de estas puertas se construye la operación XOR, un **sumador completo de 1 bit**, y finalmente un sistema de **4 bits conectado en cascada**.
+
+La implementación se realiza en **Python**, simulando el funcionamiento real de un circuito digital, no operaciones aritméticas directas del lenguaje.
 
 ---
 
 ## Objetivos
+
 - Implementar la suma y resta binaria de 4 bits.
 - Construir todas las operaciones a partir de puertas lógicas básicas.
-- Simular el funcionamiento real de un sumador–restador digital.
+- Simular el comportamiento de un sumador–restador digital real.
+- Aplicar el complemento a dos para la resta.
 - Validar la implementación mediante pruebas unitarias.
 
 ---
@@ -19,8 +23,9 @@ La implementación se realiza en **Python**.
 
 ### Arquitectura general
 
-
 El sistema está compuesto por **cuatro sumadores completos de 1 bit (SC)** conectados en cascada, formando un **ripple-carry adder**.
+
+Un *ripple-carry adder* es un tipo de sumador en el cual el **acarreo (carry)** generado en cada bit se propaga al siguiente bit, de manera secuencial.
 
 Cada sumador completo recibe:
 - Un bit del operando **A**
@@ -31,11 +36,12 @@ Y produce:
 - Un bit de salida (**S**)
 - Un acarreo de salida (**Cout**)
 
-El **Cout** de cada etapa se conecta al **Cin** de la siguiente.
+El **Cout** de cada etapa se conecta al **Cin** de la siguiente, permitiendo la propagación del acarreo a lo largo de los 4 bits.
 
 ---
 
 ### Control de suma y resta
+
 La operación se controla mediante el bit **M (Modo)**:
 
 | M | Operación |
@@ -43,13 +49,12 @@ La operación se controla mediante el bit **M (Modo)**:
 | 0 | Suma |
 | 1 | Resta |
 
-Para la resta se utiliza el **complemento a dos**:
+Para la resta se utiliza el **complemento a dos**, basado en la expresión:
 
 A − B = A + (~B + 1)
 
-
 Esto se logra mediante:
-- Una compuerta **XOR** entre cada bit de **B** y el bit **M**
+- Una compuerta **XOR** entre cada bit de **B** y el bit **M**, lo que permite invertir B cuando `M = 1`
 - La inicialización del acarreo de entrada con el valor de **M**
 
 ---
@@ -90,7 +95,6 @@ La implementación en software es una **traducción directa** de este diseño l�
 
 ### Estructura del proyecto
 
-
 SUMADOR_RESTADOR4BITS/
 │
 ├── DiagramaLogico.png
@@ -99,6 +103,51 @@ SUMADOR_RESTADOR4BITS/
 ├── Tests.py
 └── pycache/
 
+
+---
+
+## Funcionamiento del código
+
+### Puertas lógicas básicas
+
+Se implementan las puertas **AND**, **OR** y **NOT**, las cuales constituyen la base de todo el sistema.  
+No se utilizan operadores aritméticos como `+` o `-`.
+
+---
+
+### Implementación de XOR
+
+La puerta XOR no se usa como operador directo, sino que se construye a partir de AND, OR y NOT:
+
+XOR(A, B) = (A AND NOT B) OR (NOT A AND B)
+
+Esto cumple estrictamente con la restricción del ejercicio.
+
+---
+
+### Sumador completo de 1 bit
+
+El sumador completo recibe tres entradas:
+- A
+- B
+- Cin
+
+Y genera:
+- S (bit de suma)
+- Cout (acarreo de salida)
+
+Este bloque representa la unidad básica del sistema y replica el comportamiento de un sumador físico real.
+
+---
+
+### Sumador–Restador de 4 bits
+
+Cuatro sumadores completos se conectan en cascada.  
+El acarreo generado en cada bit se propaga al siguiente, implementando un **ripple-carry adder**.
+
+El bit de control **M** permite que el sistema funcione como:
+- Sumador cuando `M = 0`
+- Restador cuando `M = 1`, aplicando complemento a dos
 
 ---
 
@@ -139,6 +188,7 @@ SUMADOR_RESTADOR4BITS/
 ## Sumador completo de 1 bit
 
 ### Tabla de verdad
+
 | A | B | Cin | S | Cout |
 |---|---|-----|---|------|
 | 0 | 0 | 0 | 0 | 0 |
@@ -157,17 +207,19 @@ SUMADOR_RESTADOR4BITS/
 ### Herramienta utilizada
 Se utilizó el módulo **unittest** de Python.
 
+### Pruebas realizadas
+- Puertas lógicas AND, OR y NOT
+- Puerta XOR construida con puertas básicas
+- Sumador completo de 1 bit
+- Sumador de 4 bits (modo suma)
+- Restador de 4 bits (modo resta)
+
 ### Resultados
+
 Al ejecutar:
 
-
+```bash
 python Tests.py
-
-
 El sistema devuelve:
 
-
 OK
-
-
-Confirmando que todas las funciones cumplen con el diseño lógico propuesto.

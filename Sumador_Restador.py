@@ -21,7 +21,8 @@ def XOR(a, b):
     return O(Y(a, NO(b)), Y(NO(a), b))
 
 
-#sumador completo de 1 bit
+#sumador completo de 1 bit es un circuito que suma dos bits y un acarreo de entrada, y devuelve la suma y el acarreo de salida. La suma se calcula con XOR, y el acarreo de salida se calcula con una combinación de AND y OR para considerar todas las formas en que puede generarse un acarreo.
+#sumador completo de 1 bit: suma dos bits y un acarreo de entrada, devuelve la suma y el acarreo de salida, eso es lo que hace un sumador completo. La suma se calcula con XOR, y el acarreo de salida se calcula con una combinación de AND y OR para considerar todas las formas en que puede generarse un acarreo.
 
 def sumador_completo(a, b, acarreo_entrada):
     # calcula XOR de a y b
