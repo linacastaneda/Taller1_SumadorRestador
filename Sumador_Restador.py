@@ -25,6 +25,7 @@ def XOR(a, b):
 
 
 def sumador_completo(a, b, acarreo_entrada):
+    #a y b son los bits a sumar, acarreo_entrada es el acarreo que viene de la suma anterior (0 o 1)
     # calcula XOR de a y b
     s1 = XOR(a, b)
     # calcula XOR del resultado anterior con el acarreo
@@ -45,6 +46,7 @@ def sumador_completo(a, b, acarreo_entrada):
 # sumador/restador de 4 bits  
 
 def sumador_restador_4bits(A, B, M):
+    # A y B son listas de 4 bits (0 o 1), M es el modo (0 para suma, 1 para resta)
     # aquí guardamos los resultados de cada bit
     resultado = []
     # si M es 0 sumamos, si M es 1 restamos
