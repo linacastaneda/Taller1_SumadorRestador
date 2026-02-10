@@ -22,7 +22,7 @@ def XOR(a, b):
 
 
 #sumador completo de 1 bit es un circuito que suma dos bits y un acarreo de entrada, y devuelve la suma y el acarreo de salida. La suma se calcula con XOR, y el acarreo de salida se calcula con una combinación de AND y OR para considerar todas las formas en que puede generarse un acarreo.
-#sumador completo de 1 bit: suma dos bits y un acarreo de entrada, devuelve la suma y el acarreo de salida, eso es lo que hace un sumador completo. La suma se calcula con XOR, y el acarreo de salida se calcula con una combinación de AND y OR para considerar todas las formas en que puede generarse un acarreo.
+
 
 def sumador_completo(a, b, acarreo_entrada):
     # calcula XOR de a y b
@@ -30,19 +30,19 @@ def sumador_completo(a, b, acarreo_entrada):
     # calcula XOR del resultado anterior con el acarreo
     suma = XOR(s1, acarreo_entrada)
 
-    # generamos tres acarreos posibles
+    # generamos tres acarreos posibles AND
     acarreo1 = Y(a, b)              # hay acarreo si a y b son 1
     acarreo2 = Y(a, acarreo_entrada)    # hay acarreo si a y el acarreo anterior son 1
     acarreo3 = Y(b, acarreo_entrada)    # hay acarreo si b y el acarreo anterior son 1
 
-    # si alguno de los tres acarreos es 1, el acarreo de salida es 1
+    # si alguno de los tres acarreos es 1, el acarreo de salida es 1 OR 
     acarreo_salida = O(O(acarreo1, acarreo2), acarreo3)
 
     # devolvemos el resultado y el acarreo para la siguiente suma
     return suma, acarreo_salida
 
 
-# sumador/restador de 4 bits
+# sumador/restador de 4 bits  
 
 def sumador_restador_4bits(A, B, M):
     # aquí guardamos los resultados de cada bit
@@ -53,6 +53,7 @@ def sumador_restador_4bits(A, B, M):
     # procesamos cada uno de los 4 bits
     for i in range(4):
         # si M es 0 (suma), B se queda igual. si M es 1 (resta), B se invierte
+        #Primer XOR para modificar B según M: si M es 0, b_modificado = B[i]. Si M es 1, b_modificado = NOT(B[i])
         b_modificado = XOR(B[i], M)
         # sumamos bit por bit con el acarreo anterior
         s, acarreo = sumador_completo(A[i], b_modificado, acarreo)

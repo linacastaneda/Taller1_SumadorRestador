@@ -71,8 +71,6 @@ El siguiente diagrama muestra el diseño completo del **sumador–restador de 4 
   <img src="./DiagramaLogico.png" alt="Diagrama lógico del sumador-restador de 4 bits" width="700">
 </p>
 
-La implementación en software es una **traducción directa** de este diseño lógico.
-
 ---
 
 ### Correspondencia entre diagrama e implementación
@@ -104,7 +102,6 @@ La puerta XOR no se usa como operador directo, sino que se construye a partir de
 
 XOR(A, B) = (A AND NOT B) OR (NOT A AND B)
 
-Esto cumple estrictamente con la restricción del ejercicio.
 
 ---
 
@@ -119,7 +116,6 @@ Y genera:
 - S (bit de suma)
 - Cout (acarreo de salida)
 
-Este bloque representa la unidad básica del sistema y replica el comportamiento de un sumador físico real.
 
 ---
 
@@ -189,6 +185,9 @@ El bit de control **M** permite que el sistema funcione como:
 
 ### Herramienta utilizada
 Se utilizó el módulo **unittest** de Python.
+
+-Facilita la validación progresiva del sistema, desde las puertas lógicas básicas hasta el sumador–restador completo.
+- Reemplaza la necesidad de verificar manualmente grandes tablas de verdad, reduciendo errores humanos.
 
 ### Pruebas realizadas
 - Puertas lógicas AND, OR y NOT
