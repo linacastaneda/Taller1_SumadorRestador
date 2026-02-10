@@ -5,17 +5,14 @@
 Este proyecto implementa un **sumador–restador de 4 bits** utilizando únicamente **puertas lógicas básicas** (AND, OR y NOT).  
 A partir de estas puertas se construye la operación XOR, un **sumador completo de 1 bit**, y finalmente un sistema de **4 bits conectado en cascada**.
 
-La implementación se realiza en **Python**, simulando el funcionamiento real de un circuito digital, no operaciones aritméticas directas del lenguaje.
-
 ---
 
 ## Objetivos
 
 - Implementar la suma y resta binaria de 4 bits.
 - Construir todas las operaciones a partir de puertas lógicas básicas.
-- Simular el comportamiento de un sumador–restador digital real.
 - Aplicar el complemento a dos para la resta.
-- Validar la implementación mediante pruebas unitarias.
+- Validar la implementación mediante pruebas.
 
 ---
 
