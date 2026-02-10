@@ -86,23 +86,6 @@ La implementación en software es una **traducción directa** de este diseño l�
 | Salidas S0–S3 | lista `resultado` |
 | Acarreo final C3 | `acarreo` final |
 
----
-
-## Implementación
-
-### Lenguaje utilizado
-- Python 3
-
-### Estructura del proyecto
-
-SUMADOR_RESTADOR4BITS/
-│
-├── DiagramaLogico.png
-├── README.md
-├── Sumador_Restador.py
-├── Tests.py
-└── pycache/
-
 
 ---
 
